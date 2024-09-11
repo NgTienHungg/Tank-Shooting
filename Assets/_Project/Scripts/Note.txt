@@ -1,0 +1,19 @@
+[Netcode] Deferred messages were received for a trigger of type OnSpawn with key 0, but that trigger was not received within within 1 second(s).
+Lỗi này thường xảy ra khi một NetworkObject nhận được một hoặc nhiều tin nhắn mạng (như ServerRpc hoặc ClientRpc calls) trước khi nó nhận được sự kiện OnSpawn.
+Trong Unity Netcode, một NetworkObject phải nhận được sự kiện OnSpawn trước khi nó có thể xử lý bất kỳ tin nhắn mạng nào khác.
+Sự kiện OnSpawn thông báo cho NetworkObject rằng nó đã được spawn trên mạng và sẵn sàng để xử lý tin nhắn mạng.
+Nếu một NetworkObject nhận được tin nhắn mạng trước khi nó nhận được sự kiện OnSpawn, Unity Netcode sẽ hoãn tin nhắn đó và cố gắng xử lý nó sau khi sự kiện OnSpawn được nhận.
+Tuy nhiên, nếu sự kiện OnSpawn không được nhận trong vòng một giây sau khi tin nhắn được hoãn, bạn sẽ nhận được lỗi này.
+Để khắc phục lỗi này, bạn cần đảm bảo rằng NetworkObject của bạn được spawn trên mạng trước khi bạn cố gắng gọi bất kỳ ServerRpc hoặc ClientRpc nào trên nó.
+
+
+NetworkObject bị set active false khi Start 1 Client hay Server thì vẫn tính là IsSpawned
+Nhưng không gọi được ServerRpc hay ClientRpc
+
+
+Đối với các Object được Spawn trong Runtime: Awake -> OnNetworkSpawn -> Start
+Đối với các Object có sẵn trên scene: Awake -> Start -> OnNetworkSpawn
+
+
+ NetworkManager.Singleton.SceneManager.LoadScene("Play", LoadSceneMode.Single);
+ Cái LoadScene này mất 1 lúc để Client mới chuyển scene mới, nên cần Delay các công việc cần xử lý.
