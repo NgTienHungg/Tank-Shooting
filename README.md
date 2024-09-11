@@ -1,7 +1,3 @@
-# g6_proj-297486569
-
-g6_proj-297486569 created by GitHub Classroom
-
 # Multiplayer Tank Shooting Game
 
 ## Giới thiệu
@@ -89,7 +85,7 @@ Multiplayer Tank Shooting Game là một trò chơi đa người chơi, được
 3. Nhập địa chỉ IP của máy chủ để tham gia sảnh chờ.
 4. Chờ đợi đủ số lượng người chơi và bắt đầu trò chơi.
 
-## Thành viên nhóm
+<!-- ## Thành viên nhóm
 
 <div style="display: flex; flex-direction: column; gap: 10px">
     <div style="display: flex; gap: 10px; align-items: center">
@@ -116,4 +112,4 @@ Multiplayer Tank Shooting Game là một trò chơi đa người chơi, được
             [Nguyễn Như Quỳnh]
         </a>
     </div>
-</div>
+</div> -->
